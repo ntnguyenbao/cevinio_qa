@@ -1,23 +1,33 @@
 *** Settings ***
-Documentation    Suite description
-Library           Selenium2Library
+Documentation   Suite description
+Library         Selenium2Library
+Library         keywords.home.homeKeywords
+Library         ../lib/browser_factory.py
+Library         lib.dataReader.DataReader
+Library         keywords.searchResult.searchResultKeywords
+Test Setup      Initialize
+Test Teardown   Tear Down
 
 *** Variables ***
-${URL}  https://openweathermap.org/
-${Browser}  Edge
-${xpath}    //*[@id="q"]
-*** Test Cases ***
-Open browser
-    [Tags]    DEBUG
-    Open Browser    ${URL}  ${Browser}
-    maximize browser window
-    wait until element is visible   ${xpath}    30
+${Browser}  Chrome
+${expectedFile}     ../Data/search_wearther_in_your_city.xlsx
+
+*** Keywords ***
+Initialize
+    ${driver}=  Get Browser     ${Browser}
+    Set Suite Variable  ${driver}
+
+Tear Down
+    Run Keyword If Test Failed  keywords.home.homeKeywords.take screenshot
     close all browsers
 
 *** Test Cases ***
-Open browser2
-    [Tags]    DEBUG
-    Open Browser    ${URL}  ${Browser}
-    maximize browser window
-    wait until element is visible   ${xpath}    30
-    close all browsers
+Func-001
+    Access Home Page    ${driver}
+    ${cityData}     Read sheet expected_result from exel file ${expectedFile}
+#    ${randomCity}   Select random city from ${cityData}
+    ${randomCity}=  set variable    ho chi minh
+    Search city     ${randomCity}
+    ${expectedResult}  find records which have city is ${randomCity} in ${cityData}
+    Search Result page is loaded successfully  ${driver}   timeout=10
+    Actual result should be same ${expectedResult}
