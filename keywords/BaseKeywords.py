@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from robot.api.logger import librarylogger as logger
-import datetime
 
 
 class BaseKeywords(object):
@@ -12,7 +11,7 @@ class BaseKeywords(object):
 
     def find_element(self, sLocator: str, timeout: int = 30):
         wait = WebDriverWait(self.driver, timeout)
-        lSplitLocator = sLocator.split(':')
+        lSplitLocator = sLocator.split(':', 1)
         dLocatorType = {
             'id': By.ID,
             'name': By.NAME,
@@ -32,7 +31,7 @@ class BaseKeywords(object):
 
     def find_elements(self, sLocator: str, timeout: int = 30):
         wait = WebDriverWait(self.driver, timeout)
-        lSplitLocator = sLocator.split(':')
+        lSplitLocator = sLocator.split(':', 1)
         dLocatorType = {
             'id': By.ID,
             'name': By.NAME,
@@ -49,9 +48,3 @@ class BaseKeywords(object):
         except Exception as ex:
             logger.error(ex)
             return None
-
-    def take_screenshot(self):
-        currentDate = datetime.datetime.now()
-        output_dir = "../Report/%s" % currentDate.strftime("%d%m%Y")
-        imageName = "screenshot-%s.png" % currentDate.strftime("%Y%m%d-%H%M%S")
-        self.driver.save_screenshot('%s/%s' % (output_dir, imageName))

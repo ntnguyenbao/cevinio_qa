@@ -1,6 +1,8 @@
 from selenium import webdriver
 from pathlib import Path
 from robot.api.deco import keyword
+from robot.libraries.BuiltIn import BuiltIn
+
 
 def __get_current_path():
     return str(Path(__file__).parent.absolute())
@@ -40,11 +42,13 @@ def __get_chrome(headless: str) -> webdriver:
     return webdriver.Chrome(chrome_options=chrome_options)
 
 @keyword("Get Browser")
-def get_browser(name: str, headless: bool=False):
+def get_browser(name: str, headless: bool = False):
     """This function is used for quick selection of browser."""
     switcher = {
         "firefox": __get_firefox,
         "chrome": __get_chrome
     }
     func = switcher.get(name.lower())
-    return func(headless)
+    driver = func(headless)
+    BuiltIn().get_library_instance('Selenium2Library').register_driver(driver, name)
+    return driver
