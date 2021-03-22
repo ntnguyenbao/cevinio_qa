@@ -4,7 +4,7 @@ from robot.api.logger import librarylogger as logger
 import random
 
 
-class DataReader(object):
+class dataReader(object):
 
     def __init__(self) -> None:
         super().__init__()

@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation   Suite description
 Library         Selenium2Library
-Library         keywords.home.homeKeywords
+Library         ../keywords/home.py
 Library         ../lib/browser_factory.py
-Library         lib.dataReader.DataReader
-Library         keywords.searchResult.searchResultKeywords
-Library         keywords.cityDetail.cityDetailKeywords
+Library         ../lib/dataReader.py
+Library         ../keywords/searchResult.py
+Library         ../keywords/cityDetail.py
 Test Setup      Initialize
 Test Teardown   Tear Down
 
@@ -14,7 +14,7 @@ ${expectedFile}     ../Data/search_wearther_in_your_city.xlsx
 
 *** Keywords ***
 Initialize
-    ${driver}=  Get Browser     ${browser}  ${headless}
+    ${driver}=  Get Browser     ${browser}
     Set Suite Variable  ${driver}
 
 Tear Down

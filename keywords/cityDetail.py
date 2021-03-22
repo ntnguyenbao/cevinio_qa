@@ -1,9 +1,13 @@
+import sys
+
+sys.path.append("..")
+
 from Pages.cityDetail import cityDetailPage as detailPage
 from robot.api.deco import keyword
 from keywords.BaseKeywords import BaseKeywords
 
 
-class cityDetailKeywords(BaseKeywords):
+class cityDetail(BaseKeywords):
 
     def __init__(self):
         super().__init__()

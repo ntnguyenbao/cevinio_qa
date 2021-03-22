@@ -1,12 +1,14 @@
+import sys
+
+sys.path.append("..")
+
 from Pages.searchResult import searchResultPage as searchPage
 from robot.api.deco import keyword
 from keywords.BaseKeywords import BaseKeywords
-from selenium.webdriver.common.action_chains import ActionChains
-from robot.libraries.BuiltIn import BuiltIn
 import random
 
 
-class searchResultKeywords(BaseKeywords):
+class searchResult(BaseKeywords):
 
     def __init__(self):
         super().__init__()

@@ -12,7 +12,6 @@ def main():
     parser.add_argument("--include", action='append', required=False, help=f'Tag which will be included')
     parser.add_argument("--variable", action='append', required=False, help=f'Variable used for test suite')
     parser.add_argument("--browser", required=False, default='chrome', help=f'Browser is used to execute testing')
-    parser.add_argument("--headless", required=False, default=False, action='store_true', help=f'Execute testing in headless/silent mode')
     parser.add_argument('-T', '--timestampoutputs', required=False, action='store_true', help=f'Output log based on timestamp')
 
     args = vars(parser.parse_args())
@@ -20,9 +19,7 @@ def main():
     if 'variable' not in list(args.keys()):
         args['variable'] = []
     args['variable'].append('browser:%s' % args['browser'])
-    args['variable'].append('headless:%s' % args['headless'])
     args.pop('browser')
-    args.pop('headless')
 
     currentDate = datetime.datetime.now()
     sOutputDir = "../Report/%s" % currentDate.strftime("%d%m%Y")

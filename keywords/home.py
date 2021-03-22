@@ -1,11 +1,15 @@
 import string
 import random
+import sys
+
+sys.path.append("..")
+
 from Pages.home import homePage as homePage
 from robot.api.deco import keyword
 from keywords.BaseKeywords import BaseKeywords
 
 
-class homeKeywords(BaseKeywords):
+class home(BaseKeywords):
 
 
     def __init__(self):
