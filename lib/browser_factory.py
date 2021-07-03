@@ -19,6 +19,7 @@ def __get_firefox() -> webdriver:
 def __get_chrome() -> webdriver:
     """This function establishes chrome browser."""
     chrome_options = webdriver.chrome.options.Options()
+    chrome_options.add_argument('ignore-certificate-errors')
     chrome_options.add_experimental_option("prefs", {
         "profile.default_content_setting_values.notifications": 1
     })
