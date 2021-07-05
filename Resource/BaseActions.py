@@ -6,7 +6,7 @@ from robot.api.deco import keyword
 from lib.browser_factory import *
 
 
-class BaseKeywords(object):
+class BaseActions(object):
 
     def __init__(self):
         self.driver = None
@@ -24,6 +24,8 @@ class BaseKeywords(object):
             'class': By.CLASS_NAME,
             'css_selector': By.CSS_SELECTOR
         }
+        if len(lSplitLocator) <= 1:
+            raise Exception("locator %s is in incorrect format. Expected format: <locator type>:<locator value> (e.g. xpath://div)" % sLocator)
         locatorType = dLocatorType.get(lSplitLocator[0].lower())
         return wait.until(EC.presence_of_element_located((locatorType, lSplitLocator[1])))
 
@@ -40,6 +42,8 @@ class BaseKeywords(object):
             'class': By.CLASS_NAME,
             'css_selector': By.CSS_SELECTOR
         }
+        if len(lSplitLocator) <= 1:
+            raise Exception("locator %s is in incorrect format. Expected format: <locator type>:<locator value> (e.g. xpath://div)" % sLocator)
         locatorType = dLocatorType.get(lSplitLocator[0].lower())
         return wait.until(EC.presence_of_all_elements_located((locatorType, lSplitLocator[1])))
 

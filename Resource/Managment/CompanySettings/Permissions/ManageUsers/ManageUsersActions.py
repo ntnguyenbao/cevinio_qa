@@ -1,11 +1,11 @@
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 
-from Resource.BaseKeywords import BaseKeywords
+from Resource.BaseActions import BaseActions
 from Resource.Managment.CompanySettings.Permissions.ManageUsers.ManageUsersPage import ManageUsersPage
 
 
-class ManageUsersKeywords(BaseKeywords):
+class ManageUsersActions(BaseActions):
 
     def __init__(self):
         super().__init__()

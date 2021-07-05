@@ -5,9 +5,9 @@ from robot.libraries.BuiltIn import BuiltIn
 
 from Resource.cockpit.cockpitPage import cockpitPage
 from robot.api.deco import keyword
-from Resource.BaseKeywords import BaseKeywords
+from Resource.BaseActions import BaseActions
 
-class cockpitKeywords(BaseKeywords):
+class cockpitActions(BaseActions):
 
     def __init__(self):
         super().__init__()
@@ -26,4 +26,9 @@ class cockpitKeywords(BaseKeywords):
         xpath = xpath.replace("?", module)
         lnk_function = self.find_element(xpath)
         lnk_function.click()
+
+    @keyword("user clicks Logout icon")
+    def click_logout(self):
+        self.li_logout = self.find_element(cockpitPage.li_logout)
+        self.li_logout.click()
 

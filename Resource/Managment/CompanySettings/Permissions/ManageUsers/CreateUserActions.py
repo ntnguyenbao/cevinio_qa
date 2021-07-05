@@ -3,11 +3,11 @@ from robot.libraries.BuiltIn import BuiltIn
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.select import Select
 
-from Resource.BaseKeywords import BaseKeywords
+from Resource.BaseActions import BaseActions
 from Resource.Managment.CompanySettings.Permissions.ManageUsers.CreateUserPage import CreateUserPage
 
 
-class CreateUserKeywords(BaseKeywords):
+class CreateUserActions(BaseActions):
     def __init__(self):
         super().__init__()
 

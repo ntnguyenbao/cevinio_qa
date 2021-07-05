@@ -2,13 +2,13 @@ import sys
 
 from robot.libraries.BuiltIn import BuiltIn
 
-sys.path.append("../..")
+# sys.path.append("../..")
 
 from Resource.login.loginPage import loginPage
 from robot.api.deco import keyword
-from Resource.BaseKeywords import BaseKeywords
+from Resource.BaseActions import BaseActions
 
-class loginKeywords(BaseKeywords):
+class loginActions(BaseActions):
     def __init__(self):
         super().__init__()
 
