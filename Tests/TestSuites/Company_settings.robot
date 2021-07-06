@@ -1,24 +1,22 @@
 *** Settings ***
 Documentation    This test suites contains test scenarios for Companny settings feature
 Library     Selenium2Library
-Resource    Tests/Keywords/common.robot
-Resource    Tests/Keywords/Managment/CompanySettings/Permissions/ManageUsers.robot
-#Library     Resource/cockpit/cockpitActions.py
-#Library     Resource/Managment/CompanySettings/CompanySettingsActions.py
-#Library     Resource/Managment/CompanySettings/Permissions/ManageUsers/ManageUsersActions.py
-#Library     Resource/Managment/CompanySettings/Permissions/ManageUsers/CreateUserActions.py
-#Library     Resource/Managment/CompanySettings/Permissions/ManageUsers/EditUserRolesAndRightsActions.py
+Resource    ../Keywords/common.robot
+Resource    ../Keywords/Managment/CompanySettings/Permissions/ManageUsers.robot
 
 Test Teardown   Teardown
+
+*** Settings ***
+Suite Setup
 
 *** Test Cases ***
 New User
     [Tags]  Manage Users
-    Given user access T-BLOX by dev/dev
-    ${userInfo}    Create Dictionary   Name=test2    Email address=test2@test.com  FTE Percentage=100    Costcenter=General    Username=test2    Password=Test123456
+    Given user opens ${browser} and accesses T-BLOX by dev/dev
+    ${userInfo}    Create Dictionary   Name=test3    Email address=test3@test.com  FTE Percentage=100    Costcenter=General    Username=test3    Password=Test123456
     When user adds a new user   ${userInfo}
-#    Then a notice message is displayed "The new user was added sucessfully."
-#    and Role Assignment page is displayed
+    Then a notice message is displayed "The new user was added sucessfully."
+    and Role Assignment page is displayed
     When user logout
     and user login by test2/Test123456
     then then cockpit page is displayed

@@ -2,7 +2,9 @@ import datetime
 import os
 import argparse
 import robot
+import sys
 
+sys.path.append('..')
 
 def main():
     parser = argparse.ArgumentParser(description='+++ Script for test case execution +++',

@@ -12,7 +12,6 @@ class commonActions(BaseActions):
 
     @keyword("user accesses ${url} by ${browser}")
     def access_url_by_browser(self, url, browser):
-        if self.driver is None:
-            self.driver = get_browser(browser)
-            self.driver.maximize_window()
-            self.driver.get(url)
+        self.driver = get_browser(browser)
+        self.driver.maximize_window()
+        self.driver.get(url)

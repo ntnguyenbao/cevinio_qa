@@ -1,8 +1,8 @@
 *** Settings ***
-Library     Resource/Managment/CompanySettings/CompanySettingsActions.py
-Library     Resource/Managment/CompanySettings/Permissions/ManageUsers/ManageUsersActions.py
-Library     Resource/Managment/CompanySettings/Permissions/ManageUsers/CreateUserActions.py
-Library     Resource/Managment/CompanySettings/Permissions/ManageUsers/EditUserRolesAndRightsActions.py
+Library     ../../../../../Resource/Managment/CompanySettings/CompanySettingsActions.py
+Library     ../../../../../Resource/Managment/CompanySettings/Permissions/ManageUsers/ManageUsersActions.py
+Library     ../../../../../Resource/Managment/CompanySettings/Permissions/ManageUsers/CreateUserActions.py
+Library     ../../../../../Resource/Managment/CompanySettings/Permissions/ManageUsers/EditUserRolesAndRightsActions.py
 
 *** Keywords ***
 User adds a new user
@@ -15,7 +15,5 @@ User adds a new user
     Then Create User form is displayed
     When user inputs ${userInfo} into form
     and click Submit button
-#    Then a notice message is displayed "The new user was added sucessfully."
-#    and Role Assignment page is displayed
 
 

@@ -12,6 +12,7 @@ def __get_firefox() -> webdriver:
     """This function establishes firefox browser."""
     firefox_options = webdriver.firefox.options.Options()
     firefox_options.set_preference("dom.push.enabled", False)
+    firefox_options.set_capability("acceptInsecureCerts", True)
 
     return webdriver.Firefox(firefox_options=firefox_options)
 
